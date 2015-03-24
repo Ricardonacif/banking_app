@@ -1,4 +1,5 @@
 require_relative 'base_entity'
+
 module BankingApp
   module Entities
     class Account < BaseEntity

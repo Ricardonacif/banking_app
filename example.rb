@@ -15,9 +15,19 @@ Rake.application.load_rakefile
 Rake.application[:migrate].invoke
 
 #populating accounts
-BankingApp::Repositories::AccountRepository.create(balance: 32)
-BankingApp::Repositories::AccountRepository.create(balance: 45)
+account_with_money = BankingApp::Repositories::AccountRepository.create(balance: 10000)
+poor_account = BankingApp::Repositories::AccountRepository.create(balance: 0)
 
 #calling the use case Get Balance
-BankingApp::Interactors::GetBalance.new(account_id: 2).call
+BankingApp::Interactors::GetBalance.new(account_id: account_with_money.id).call
 
+#calling the use case Transfer Money
+BankingApp::Interactors::TransferMoney.new(
+  amount: 240, 
+  source_account_id: account_with_money.id,
+  destination_account_id: poor_account.id
+).call
+
+#checking money on poor_account now
+puts BankingApp::Interactors::GetBalance.new(account_id: poor_account.id).call[:balance]
+puts BankingApp::Interactors::GetBalance.new(account_id: account_with_money.id).call[:balance]

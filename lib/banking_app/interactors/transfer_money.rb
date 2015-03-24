@@ -17,15 +17,15 @@ module BankingApp
         end
         return @response if @response[:errors].size > 0
 
+        #transfer logic
         source_account = BankingApp::Repositories::AccountRepository.find(request[:source_account_id])
         destination_account = BankingApp::Repositories::AccountRepository.find(request[:destination_account_id])
 
-        BankingApp::Repositories::TransferRepository.transaction do |a|
-          puts save_repository(BankingApp::Repositories::TransferRepository)
+        BankingApp::Repositories::TransferRepository.transaction do
+          @response[:id] = save_repository(BankingApp::Repositories::TransferRepository).id
           source_account.decrement!(:balance, request[:amount])
           destination_account.increment!(:balance, request[:amount])
         end
-
         @response
       end
 

@@ -1,31 +1,15 @@
-# BankingSystem
+# BankingApp
 
-TODO: Write a gem description
+Simple implementation of a Banking application using an architecture approach based on the Clean Architecture by Robert Cecil Martin using Ruby.
 
-## Installation
+## Running example
 
-Add this line to your application's Gemfile:
+Run this command on the root folder to execute the example.rb file:
 
-```ruby
-gem 'banking_system'
+```cmd
+bundle exec irb -I . -r example
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install banking_system
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/banking_system/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+## Running specs
+```
+bundle exec rspec
+```
