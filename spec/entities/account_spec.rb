@@ -3,11 +3,10 @@ require 'spec_helper'
 describe BankingApp::Entities::Account do
   
   context "valid" do 
-    let(:account_entity) {BankingApp::Entities::Account.new(id: 10, balance: 240)}
+    subject(:account_entity) {BankingApp::Entities::Account.new(id: 10, balance: 240)}
 
-    it "should be valid" do
-      expect(account_entity).to be_valid
-    end
+    it { is_expected.to be_valid }
+    
   end
 
   context "invalid" do 
