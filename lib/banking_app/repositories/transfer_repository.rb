@@ -2,8 +2,8 @@ require 'active_record'
 
 module BankingApp
   module Repositories
-    class AccountRepository < ActiveRecord::Base
-
+    class TransferRepository < ActiveRecord::Base
+      
     end
   end
 end

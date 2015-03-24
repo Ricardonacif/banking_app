@@ -19,7 +19,7 @@ describe BankingApp::Entities::Transfer do
       expect(transfer_entity).not_to be_valid
     end
 
-    [:id, :source_account_id, :destination_account_id, :amount].each do |attribute|
+    [:source_account_id, :destination_account_id, :amount].each do |attribute|
       it "should not be valid without a #{attribute}" do 
         transfer_entity = BankingApp::Entities::Transfer.new(valid_attributes.update( attribute => nil ))
         expect(transfer_entity).not_to be_valid
